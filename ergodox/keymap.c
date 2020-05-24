@@ -207,7 +207,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* Keymap 4: Factorio
    *
    * ,--------------------------------------------------.           ,--------------------------------------------------.
-   * |   Esc  |      |      |      |      |   X  |  `   |           | BaseL|      |      |      |      |      | Tog AS |
+   * |   Esc  |      |      |      |      |   X  |  `   |           |      |      |      |      |      |      | Tog AS |
    * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
    * |   Tab  | Space|   T  |  W   |  M   |   B  |      |           |      |      |      |      |      |      |        |
    * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
@@ -238,7 +238,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                             KC_Q,           KC_R,         KC_F,
 
     //right hand
-    TG(0),   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_ASTG,
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_ASTG,
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
              KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
@@ -251,7 +251,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* Keymap 5: Gemini (Serial) Alternative
    *
    * ,--------------------------------------------------.           ,--------------------------------------------------.
-   * |        |   #  |   #  |   #  |   #  |   #  |      |           | BaseL|   #  |   #  |   #  |   #  |   #  |   #    |
+   * |        |   #  |   #  |   #  |   #  |   #  |      |           |      |   #  |   #  |   #  |   #  |   #  |   #    |
    * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
    * |        |   S  |   T  |   P  |   H  |   *  |      |           |      |   *  |   F  |   P  |   L  |   T  |   D    |
    * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
@@ -280,7 +280,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                       KC_NO,
                                     KC_NO,   KC_NO,   KC_NO,
       // right hand
-         TG(0),    STN_N6,  STN_N7,  STN_N8,  STN_N9,  STN_NA,  STN_NB,
+         KC_TRNS,  STN_N6,  STN_N7,  STN_N8,  STN_N9,  STN_NA,  STN_NB,
          KC_TRNS,  STN_ST3, STN_FR,  STN_PR,  STN_LR,  STN_TR,  STN_DR,
                    STN_ST4, STN_RR,  STN_BR,  STN_GR,  STN_SR,  STN_ZR,
          KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
