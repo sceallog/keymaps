@@ -126,7 +126,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
    * |  BrDn  |      |      |      |      |      |      |           |      |      |      | Prev | Next |      |        |
    * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
-   *   |      |      | Mclk |      |      |                                       |VolUp |VolDn | Mute |      |      |
+   *   |      |      | Mclk |      |      |                                       |VolDn |VolUp | Mute |      |      |
    *   `----------------------------------'                                       `----------------------------------'
    *                                        ,-------------.       ,-------------.
    *                                        |      |      |       |      |      |
@@ -149,11 +149,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                 KC_MS_WH_DOWN,        KC_MS_WH_UP,          KC_TRNS,
 
     //left hand
-    KC_TRNS, KC_TRNS,         KC_TRNS,          KC_TRNS,              KC_TRNS,              KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS,         KC_TRNS,          KC_TRNS,              KC_TRNS,              KC_TRNS, KC_TRNS,
-             KC_TRNS,         KC_TRNS,          KC_TRNS,              KC_TRNS,              KC_TRNS, KC_MEDIA_PLAY_PAUSE,
-    KC_TRNS, KC_TRNS,         KC_TRNS,          KC_MEDIA_PREV_TRACK,  KC_MEDIA_NEXT_TRACK,  KC_TRNS, KC_TRNS,
-                              KC_AUDIO_VOL_UP,  KC_AUDIO_VOL_DOWN,    KC_AUDIO_MUTE,        KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_TRNS,         KC_TRNS,            KC_TRNS,              KC_TRNS,              KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_TRNS,         KC_TRNS,            KC_TRNS,              KC_TRNS,              KC_TRNS, KC_TRNS,
+             KC_TRNS,         KC_TRNS,            KC_TRNS,              KC_TRNS,              KC_TRNS, KC_MEDIA_PLAY_PAUSE,
+    KC_TRNS, KC_TRNS,         KC_TRNS,         	  KC_MEDIA_PREV_TRACK,  KC_MEDIA_NEXT_TRACK,  KC_TRNS, KC_TRNS,
+                              KC_AUDIO_VOL_DOWN,  KC_AUDIO_VOL_UP,      KC_AUDIO_MUTE,        KC_TRNS, KC_TRNS,
     KC_TRNS, KC_TRNS,
     KC_TRNS,
     KC_TRNS, KC_WWW_FORWARD,  KC_WWW_BACK
