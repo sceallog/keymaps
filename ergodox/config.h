@@ -12,4 +12,3 @@
 #pragma once
 
 #define AUTO_SHIFT_TIMEOUT 130
-// #define NO_AUTO_SHIFT_SPECIAL /* Do not Auto Shift special keys, which include -_, =+, [{, ]}, ;:, '", ,<, .>, and /? */
