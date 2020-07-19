@@ -9,3 +9,6 @@ STENO_ENABLE = yes
 
 # Enable Auto Shift
 AUTO_SHIFT_ENABLE = yes
+
+# Enable Leader Key
+LEADER_ENABLE = yes

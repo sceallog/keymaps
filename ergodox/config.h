@@ -12,3 +12,7 @@
 #pragma once
 
 #define AUTO_SHIFT_TIMEOUT 130
+
+#define LEADER_PER_KEY_TIMING
+#define LEADER_TIMEOUT 250
+
