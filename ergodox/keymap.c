@@ -366,10 +366,27 @@ void matrix_scan_user(void) {
       unregister_code(KC_ESC);
       SEND_STRING(":%s/old/new/g");
     }
+    SEQ_ONE_KEY(KC_W) {
+      register_code(KC_ESC);
+      unregister_code(KC_ESC);
+      SEND_STRING(":w");
+      register_code(KC_ENTER);
+      unregister_code(KC_ENTER);
+    }
     SEQ_TWO_KEYS(KC_W, KC_Q) {
       register_code(KC_ESC);
       unregister_code(KC_ESC);
       SEND_STRING(":wq");
+      register_code(KC_ENTER);
+      unregister_code(KC_ENTER);
+    }
+    SEQ_TWO_KEYS(KC_K, KC_W) {
+      register_code(KC_LGUI);
+      register_code(KC_K);
+      unregister_code(KC_K);
+      unregister_code(KC_LGUI);
+      register_code(KC_W);
+      unregister_code(KC_W);
     }
   }
 }
