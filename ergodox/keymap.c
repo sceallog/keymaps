@@ -373,6 +373,13 @@ void matrix_scan_user(void) {
       register_code(KC_ENTER);
       unregister_code(KC_ENTER);
     }
+    SEQ_ONE_KEY(KC_Q) {
+      register_code(KC_ESC);
+      unregister_code(KC_ESC);
+      SEND_STRING(":q");
+      register_code(KC_ENTER);
+      unregister_code(KC_ENTER);
+    }
     SEQ_TWO_KEYS(KC_W, KC_Q) {
       register_code(KC_ESC);
       unregister_code(KC_ESC);
