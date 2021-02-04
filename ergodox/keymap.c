@@ -361,11 +361,7 @@ void matrix_scan_user(void) {
     leading = false;
     leader_end();
 
-    SEQ_ONE_KEY(KC_S) {
-      register_code(KC_ESC);
-      unregister_code(KC_ESC);
-      SEND_STRING(":%s/old/new/g");
-    }
+		// Vim: write.
     SEQ_ONE_KEY(KC_W) {
       register_code(KC_ESC);
       unregister_code(KC_ESC);
@@ -373,6 +369,7 @@ void matrix_scan_user(void) {
       register_code(KC_ENTER);
       unregister_code(KC_ENTER);
     }
+		// Vim: quit.
     SEQ_ONE_KEY(KC_Q) {
       register_code(KC_ESC);
       unregister_code(KC_ESC);
@@ -380,6 +377,94 @@ void matrix_scan_user(void) {
       register_code(KC_ENTER);
       unregister_code(KC_ENTER);
     }
+		// Tmux: split pane vertically. 
+		SEQ_ONE_KEY(KC_V) {
+			register_code(KC_LCTL)
+			register_code(KC_B)
+			unregister_code(KC_B)
+			unregister_code(KC_LCTL)
+			register_code(KC_V)
+			unregister_code(KC_V)
+		}
+		// Tmux: split pane horizontally. 
+		SEQ_ONE_KEY(KC_H) {
+			register_code(KC_LCTL)
+			register_code(KC_B)
+			unregister_code(KC_B)
+			unregister_code(KC_LCTL)
+			register_code(KC_H)
+			unregister_code(KC_H)
+		}
+		// Tmux: zoom into/out of current pane.
+		SEQ_ONE_KEY(KC_Z) {
+			register_code(KC_LCTL)
+			register_code(KC_B)
+			unregister_code(KC_B)
+			unregister_code(KC_LCTL)
+			register_code(KC_Z)
+			unregister_code(KC_Z)
+		}
+		// Tmux: create new window.
+		SEQ_ONE_KEY(KC_C) {
+			register_code(KC_LCTL)
+			register_code(KC_B)
+			unregister_code(KC_B)
+			unregister_code(KC_LCTL)
+			register_code(KC_C)
+			unregister_code(KC_C)
+		}
+		// Tmux: move to previous window.
+		SEQ_ONE_KEY(KC_P) {
+			register_code(KC_LCTL)
+			register_code(KC_B)
+			unregister_code(KC_B)
+			unregister_code(KC_LCTL)
+			register_code(KC_P)
+			unregister_code(KC_P)
+		}
+		// Tmux: move to next window.
+		SEQ_ONE_KEY(KC_N) {
+			register_code(KC_LCTL)
+			register_code(KC_B)
+			unregister_code(KC_B)
+			unregister_code(KC_LCTL)
+			register_code(KC_N)
+			unregister_code(KC_N)
+		}
+		// Tmux: kill current window.
+		SEQ_ONE_KEY(KC_K) {
+			register_code(KC_LCTL)
+			register_code(KC_B)
+			unregister_code(KC_B)
+			unregister_code(KC_LCTL)
+			register_code(KC_AMPR)
+			unregister_code(KC_AMPR)
+		}
+		// Tmux: disconnect current session.
+		SEQ_ONE_KEY(KC_D) {
+			register_code(KC_LCTL)
+			register_code(KC_B)
+			unregister_code(KC_B)
+			unregister_code(KC_LCTL)
+			register_code(KC_D)
+			unregister_code(KC_D)
+		}
+		// Tmux: show session list.
+		SEQ_ONE_KEY(KC_S) {
+			register_code(KC_LCTL)
+			register_code(KC_B)
+			unregister_code(KC_B)
+			unregister_code(KC_LCTL)
+			register_code(KC_S)
+			unregister_code(KC_S)
+		}
+		// Vim: search and replace all.
+    SEQ_TWO_KEYS(KC_S, KC_R) {
+      register_code(KC_ESC);
+      unregister_code(KC_ESC);
+      SEND_STRING(":%s/old/new/g");
+    }
+		// Vim: write and quit.
     SEQ_TWO_KEYS(KC_W, KC_Q) {
       register_code(KC_ESC);
       unregister_code(KC_ESC);
@@ -387,6 +472,7 @@ void matrix_scan_user(void) {
       register_code(KC_ENTER);
       unregister_code(KC_ENTER);
     }
+		// VSCode: close all tabs.
     SEQ_TWO_KEYS(KC_K, KC_W) {
       register_code(KC_LGUI);
       register_code(KC_K);
