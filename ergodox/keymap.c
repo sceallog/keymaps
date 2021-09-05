@@ -20,9 +20,33 @@
 #define NO_PIPE_ALT KC_GRAVE
 #define NO_BSLS_ALT KC_EQUAL
 
+#define WM_PREV LCAG(KC_LEFT)
+#define WM_FULL LCA(KC_ENTER)
+#define WM_NEXT LCAG(KC_RIGHT)
+#define WM_NW LCA(KC_U)
+#define WM_N LCA(KC_UP)
+#define WM_NE LCA(KC_I)
+#define WM_W LCA(KC_LEFT)
+#define WM_CNTR LCA(KC_C)
+#define WM_E LCA(KC_RIGHT)
+#define WM_SW LCA(KC_J)
+#define WM_S LCA(KC_DOWN)
+#define WM_SE LCA(KC_K)
+#define WM_RSTR LCA(KC_BSPC)
+#define WM_LRG LCA(KC_EQUAL)
+#define WM_SMLL LCA(KC_MINS) 
 
+
+// enum custom_keycodes {
+//   RGB_SLD = EZ_SAFE_RANGE,
+// };
 enum custom_keycodes {
-  RGB_SLD = EZ_SAFE_RANGE,
+#ifdef ORYX_CONFIGURATOR
+  VRSN = EZ_SAFE_RANGE,
+#else
+  VRSN = SAFE_RANGE,
+#endif
+  RGB_SLD
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -109,7 +133,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRNS,        KC_UP,          KC_7,           KC_8,           KC_9,           KC_ASTR,        KC_F12,
                     KC_DOWN,        KC_4,           KC_5,           KC_6,           KC_PLUS,        KC_MINUS,
     TG(4),          KC_TRNS,        KC_1,           KC_2,           KC_3,           KC_BSLASH,      KC_ENTER,
-                                    KC_0,        KC_DOT,         KC_TRNS,        KC_EQUAL,       KC_TRNS,
+                                    KC_0,           KC_COMMA,       KC_PDOT,        KC_EQUAL,       KC_TRNS,
     KC_LALT,                         KC_LCTL,
     KC_TRNS,
     KC_TRNS,        KC_TRNS,        KC_TRNS
@@ -120,43 +144,43 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,--------------------------------------------------.           ,--------------------------------------------------.
    * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
    * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
-   * |        |      | Rclk | MsUp | Lclk |      |      |           |      |      |      |      |      |      |        |
-   * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
-   * |  BrUp  |      |MsLeft|MsDown|MsRght|      |------|           |------|      |      |      |      |      |  Play  |
-   * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
-   * |  BrDn  |      |      |      |      |      |      |           |      |      |      | Prev | Next |      |        |
+   * |        | PREV |WM NW | WM N |WM NE |RESTOR|      |           |      |      |      |      |      |      |        |
+   * |--------+------+------+------+------+------| Play |           |      |------+------+------+------+------+--------|
+   * |  BrUp  | FULL | WM W |CENTRE| WM E |LARGE |------|           |------|      |      | Lclk | MsUp | Rclk |        |
+   * |--------+------+------+------+------+------| Mute |           |      |------+------+------+------+------+--------|
+   * |  BrDn  | NEXT |WM SW | WM S |WM SE |SMALL |      |           |      |      |      |MsLeft|MsDown|MsRght|        |
    * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
-   *   |      |      | Mclk |      |      |                                       |VolDn |VolUp | Mute |      |      |
+   *   |      |      |      |      |      |                                       |      | WhLe |MdlClk| WhRe |      |
    *   `----------------------------------'                                       `----------------------------------'
    *                                        ,-------------.       ,-------------.
-   *                                        |      |      |       |      |      |
+   *                                        |BrBack|BrFwd |       |      |      |
    *                                 ,------|------|------|       |------+------+------.
-   *                                 |      |      |      |       |      |Brwser|Brwser|
-   *                                 | WhDn | WhUp |------|       |------|Fwd   |Back  |
-   *                                 |      |      |      |       |      |      |      |
+   *                                 | Prev | Next |VolUp |       |      |      |      |
+   *                                 |      |      |------|       |------| WhDn | WhUp |
+   *                                 |Track |Track |VolDwn|       |      |      |      |
    *                                 `--------------------'       `--------------------'
    */
   // MEDIA AND MOUSE
   [2] = LAYOUT_ergodox(
     //right hand
-    KC_TRNS, KC_TRNS,         KC_TRNS,          KC_TRNS,              KC_TRNS,              KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS,         KC_MS_BTN2,       KC_MS_UP,             KC_MS_BTN1,           KC_TRNS, KC_TRNS,
-    KC_BRIU, KC_TRNS,         KC_MS_LEFT,       KC_MS_DOWN,           KC_MS_RIGHT,          KC_TRNS,
-    KC_BRID, KC_TRNS,         KC_TRNS,          KC_TRNS,              KC_TRNS,              KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS,         KC_MS_BTN3,       KC_TRNS,              KC_TRNS,
-                                                                      KC_TRNS,              KC_TRNS,
-                                                                                            KC_TRNS,
-                                                KC_MS_WH_DOWN,        KC_MS_WH_UP,          KC_TRNS,
+    KC_TRNS, KC_TRNS,         KC_TRNS,          KC_TRNS,              KC_TRNS,            KC_TRNS, KC_TRNS,
+    KC_TRNS, WM_PREV,         WM_NW,            WM_N,                 WM_NE,              WM_RSTR, KC_MPLY,
+    KC_BRIU, WM_FULL,         WM_W,             WM_CNTR,              WM_E,               WM_LRG,
+    KC_BRID, WM_NEXT,         WM_SW,            WM_S,                 WM_SE,              WM_SMLL, KC_MUTE,
+    KC_TRNS, KC_TRNS,         KC_TRNS,          KC_TRNS,              KC_TRNS,
+                                                                      KC_WBAK,            KC_WFWD,
+                                                                                          KC_VOLU,
+                                                KC_MPRV,              KC_MNXT,            KC_VOLD,
 
     //left hand
-    KC_TRNS, KC_TRNS,         KC_TRNS,            KC_TRNS,              KC_TRNS,              KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS,         KC_TRNS,            KC_TRNS,              KC_TRNS,              KC_TRNS, KC_TRNS,
-             KC_TRNS,         KC_TRNS,            KC_TRNS,              KC_TRNS,              KC_TRNS, KC_MEDIA_PLAY_PAUSE,
-    KC_TRNS, KC_TRNS,         KC_TRNS,         	  KC_MEDIA_PREV_TRACK,  KC_MEDIA_NEXT_TRACK,  KC_TRNS, KC_TRNS,
-                              KC_AUDIO_VOL_DOWN,  KC_AUDIO_VOL_UP,      KC_AUDIO_MUTE,        KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_TRNS,         KC_TRNS,          KC_TRNS,              KC_TRNS,            KC_TRNS,    KC_TRNS,
+    KC_TRNS, KC_TRNS,         KC_TRNS,          KC_TRNS,              KC_TRNS,            KC_TRNS,    KC_TRNS,
+             KC_TRNS,         KC_TRNS,          KC_MS_BTN1,           KC_MS_UP,           KC_MS_BTN2, KC_TRNS,
+    KC_TRNS, KC_TRNS,         KC_TRNS,         	KC_MS_LEFT,           KC_MS_DOWN,         KC_MS_R,    KC_TRNS,
+                              KC_TRNS,          KC_WH_L,              KC_MS_BTN3,         KC_WH_R,    KC_TRNS,
     KC_TRNS, KC_TRNS,
     KC_TRNS,
-    KC_TRNS, KC_WWW_FORWARD,  KC_WWW_BACK
+    KC_TRNS, KC_MS_WH_DOWN,  KC_MS_WH_UP
   ),
 
   /* Keymap 2: QWERTY layer
@@ -251,43 +275,43 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* Keymap 5: Gemini (Serial) Alternative
    *
    * ,--------------------------------------------------.           ,--------------------------------------------------.
-   * |        |   #  |   #  |   #  |   #  |   #  |      |           |      |   #  |   #  |   #  |   #  |   #  |   #    |
-   * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
-   * |        |   S  |   T  |   P  |   H  |   *  |      |           |      |   *  |   F  |   P  |   L  |   T  |   D    |
-   * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
-   * |        |   S  |   K  |   W  |   R  |   *  |------|           |------|   *  |   R  |   B  |   G  |   S  |   Z    |
-   * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
    * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+   * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+   * |        |      |   #  |   #  |   #  |   #  |  *   |           |  *   |   #  |   #  |   #  |   #  |   #  |        |
+   * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+   * |        |      |   S  |   T  |   P  |   H  |------|           |------|   F  |   P  |   L  |   T  |   D  |        |
+   * |--------+------+------+------+------+------|  *   |           |  *   |------+------+------+------+------+--------|
+   * |        |      |   S  |   K  |   W  |   R  |      |           |      |   R  |   B  |   G  |   S  |   Z  |        |
    * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
-   *   |      |      |      |   A  |   O  |                                       |   E  |   U  |      |      |      |
+   *   |      |      |      |      |      |                                       |      |      |      |      |      |
    *   `----------------------------------'                                       `----------------------------------'
    *                                        ,-------------.       ,-------------.
    *                                        |      |      |       |      |      |
    *                                 ,------|------|------|       |------+------+------.
    *                                 |      |      |      |       |      |      |      |
-   *                                 |      |      |------|       |------|      |      |
+   *                                 |   A  |   O  |------|       |------|   E  |   U  |
    *                                 |      |      |      |       |      |      |      |
    *                                 `--------------------'       `--------------------'
    */
   // Gemini over Serial
   [5] = LAYOUT_ergodox(
-         KC_NO,   STN_N1,  STN_N2,  STN_N3,  STN_N4,  STN_N5,  KC_NO,
-         KC_NO,   STN_S1,  STN_TL,  STN_PL,  STN_HL,  STN_ST1, KC_NO,
-         KC_NO,   STN_S2,  STN_KL,  STN_WL,  STN_RL,  STN_ST2,
-         KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-         KC_NO,   KC_NO,   KC_NO,   STN_A,   STN_O,
+         KC_NO,   KC_NO,  KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,       
+         KC_NO,   KC_NO,  STN_N2,   STN_N3,  STN_N4,  STN_N5,  STN_ST1,
+         KC_NO,   KC_NO,  STN_S1,   STN_TL,  STN_PL,  STN_HL,
+         KC_NO,   KC_NO,  STN_S2,   STN_KL,  STN_WL,  STN_RL,  STN_ST2,
+         KC_NO,   KC_NO,  KC_NO,    KC_NO,   KC_NO,
                                              KC_NO,   KC_NO,
                                                       KC_NO,
-                                    KC_NO,   KC_NO,   KC_NO,
+                                    STN_A,   STN_O,   KC_NO,
       // right hand
-         KC_TRNS,  STN_N6,  STN_N7,  STN_N8,  STN_N9,  STN_NA,  STN_NB,
-         KC_TRNS,  STN_ST3, STN_FR,  STN_PR,  STN_LR,  STN_TR,  STN_DR,
-                   STN_ST4, STN_RR,  STN_BR,  STN_GR,  STN_SR,  STN_ZR,
-         KC_NO,    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-                            STN_E,   STN_U,   KC_NO,   KC_NO,   KC_NO,
+         KC_TRNS,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+         STN_ST3,  STN_N6,  STN_N7,  STN_N8,  STN_N9,  STN_NA,  KC_NO,
+                   STN_FR,  STN_PR,  STN_LR,  STN_TR,  STN_DR,  KC_NO,
+         STN_ST4,  STN_RR,  STN_BR,  STN_GR,  STN_SR,  STN_ZR,  KC_NO,
+                            KC_NO,   KC_NO,   KC_NO,   KC_NO,  KC_NO,
          KC_NO,   KC_NO,
          KC_NO,
-         KC_NO,   KC_NO,   KC_NO
+         KC_NO,   STN_E,   STN_U
   ),
 };
 
@@ -299,13 +323,28 @@ void matrix_init_user(void) {
 
 bool suspended = false;
 
+// bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+//   switch (keycode) {
+//     case RGB_SLD:
+//       if (record->event.pressed) {
+//         rgblight_mode(1);
+//       }
+//       return false;
+//   }
+//   return true;
+// }
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  switch (keycode) {
-    case RGB_SLD:
-      if (record->event.pressed) {
+  if (record->event.pressed) {
+    switch (keycode) {
+      case VRSN:
+        SEND_STRING (QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
+        return false;
+      #ifdef RGBLIGHT_ENABLE
+      case RGB_SLD:
         rgblight_mode(1);
-      }
-      return false;
+        return false;
+      #endif
+    }
   }
   return true;
 }
